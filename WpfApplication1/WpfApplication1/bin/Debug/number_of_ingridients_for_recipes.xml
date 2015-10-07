@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="number_of_ingridients_for_stuffer_eggs">
+        Здесь ингредиенты.\n
+    </string>
+
+    <string name="number_of_ingredients_for_anchousny_oil">
+        Масло сливочное - 25 г\n
+        Сельдь - 25 г\n
+    </string>
+
+    <string name="number_of_ingredients_for_oranges_or_limes_in_sugar">
+        На 1 кг апельсинов:\n
+        1.5 кг сахара\n
+    </string>
+    
+    <string name="number_of_ingredients_for_orange_juice_with_cream">
+        Желток яичный - 0.5 шт\n
+        Сахар - 2 ст. ложки\n
+        Сок апельсиновый - 0.25 стакана\n
+        Сливки по вкусу\n
+    </string>
+
+    <string name="number_of_ingredients_for_orange_drink">
+        Молоко - 0.75 стакана\n
+        Сок апельсиновый - 0.25 стакана\n
+        Сахар - 1 ст. ложка\n
+    </string>
+
+    <string name="number_of_ingredients_for_anchovies_or_sparts_with_potatoes">
+        5-6 шт. картофеля\n
+        1 ст. ложка растительного масла\n
+        2 ст. ложки уксуса\n
+        Соль и перец по вкусу\n
+    </string>
+
+	<string name="number_of_ingredients_for_tasty_oli_for_fish">
+        1 л растительного масла\n
+        35–50 г  петрушки\n
+        35–50 г  сельдерея\n
+        Пряности\n
+    </string>
+
+	<string name="number_of_ingredients_for_tasty_uksus">
+        1 л уксуса\n
+        100 г эстрагона\n
+        100 г сельдерея\n
+        100 г укропа\n
+    </string>
+
+<string name="number_of_ingredients_for_artishoks">
+        Артишоки\n
+        1 лимон\n
+    </string>
+<string name="number_of_ingredients_for_abricos_juice">
+        3,7 кг абрикосов\n
+        450 г сахара\n
+    </string>
+
+<string name="number_of_ingredients_for_arbus_honey">
+        1 арбуз\n
+    </string>
+<string name="number_of_ingredients_for_lololol">
+	Ingrid_decrypt\n
+	Ingrid_decrypt\n
+	Ingrid_decrypt\n
+	Ingrid_decrypt\n
+</string-array>
+<string name="number_of_ingredients_for_enNamedjfdfhj">
+	Ingrid_decrypt\n
+	Ingrid_decrypt\n
+</string>
+
+
+
+<string name="number_of_ingredients_for_enNamef">
+
+
+
+<string name="number_of_ingredients_for_jk">
+	ekljf \n
+</string>
+
+<string name="number_of_ingredients_for_rktj">
+	\n
+	\n
+</string>
+
+</resources>
