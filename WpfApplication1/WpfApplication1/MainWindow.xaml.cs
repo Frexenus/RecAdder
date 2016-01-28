@@ -27,9 +27,28 @@ namespace WpfApplication1
     {
         int CIing = 0;
         int CSteps = 0;
+        List<string> eachIngID;
+
         public MainWindow()
         {
+            eachIngID = new List<string>();
+            
             InitializeComponent();
+        }
+
+        public string FormatIngredientTAG(List<string> strs)
+        {
+            string ingTag = "";
+            foreach (string item in strs)
+            {
+                
+                ingTag += item + ",";
+
+            }
+            ingTag = ingTag.Remove(ingTag.Length-1,1);
+            ingTag += ".";
+
+            return ingTag;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -87,6 +106,7 @@ namespace WpfApplication1
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
+            //write to xml
             try
             {
                 DeleteLastLine(PathStep.Text);
@@ -127,6 +147,8 @@ namespace WpfApplication1
 
         private void Button_Click_5(object sender, RoutedEventArgs e)
         {
+            string ingstringtosql =  FormatIngredientTAG(eachIngID);
+            //добавление в таблицу рецептов
             try
             {
                 string databaseName = PathBase.Text;
@@ -139,7 +161,7 @@ namespace WpfApplication1
                 SQLiteCommand command = new SQLiteCommand(@"INSERT INTO 'Recipes'
 ('name' , 'ingredients' , 'howToCook', 'numberOfSteps', 'timeForCooking', 'numberOfPersons' , 'numberOfEveryIng','numberOfIngredients','measureForTime')
 VALUES ('" + name.Text + "','" +
-              ingredients.Text + "','" +
+              ingstringtosql + "','" +
               enName.Text + "'," +
               CSteps + "," +
               Convert.ToInt32(time.Text) + "," +
@@ -161,12 +183,16 @@ VALUES ('" + name.Text + "','" +
             {
                 PathBase.BorderBrush = Separator.Background;
             }
+
+            newalgorithmSQLrequest();
+
             //string databaseName = @"C:\cyber.db";
             //SQLiteConnection.CreateFile(databaseName);
         }
 
         private void Button_Click_6(object sender, RoutedEventArgs e)
         {
+            addingsIDs.Content = "ADD";
             name.Clear();
             enName.Clear();
             ingredients.Clear();
@@ -224,13 +250,8 @@ VALUES ('" + name.Text + "','" +
 
         private void ingredients_KeyUp(object sender, KeyEventArgs e)
         {
-            string ingstring;
-            ingstring = ingredients.Text;
-            if (ingstring == null || ingstring == "")
-            {
-                return;
-            }
-            if (ingstring[ingstring.Length - 1] == '.')
+           
+            if (ingredients.Text != null)
             {
                 ingredients.BorderBrush = Version.BorderBrush;
             }
@@ -288,6 +309,88 @@ VALUES ('" + name.Text + "','" +
         private void clearings_Click(object sender, RoutedEventArgs e)
         {
             numberofStepsXML.Text = "";
+        }
+
+        private void test_Click(object sender, RoutedEventArgs e)
+        {
+            newalgorithmSQLrequest();
+        }
+
+        private void newalgorithmSQLrequest()
+        {
+            try
+            {
+
+                //находим id рецепта по его английскому названию
+                string idOfRecipe = "";
+                
+                string cmd = "select _id from Recipes where howToCook=\"" + enName.Text + "\";";
+                string databaseName = PathBase.Text;
+                SQLiteConnection connection = new SQLiteConnection(string.Format("Data Source={0};", databaseName));
+                connection.Open();
+                SQLiteCommand command = new SQLiteCommand(cmd, connection);
+                SQLiteDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                idOfRecipe = Convert.ToString(reader["_id"]);
+                connection.Close();
+
+                foreach (var item in eachIngID)
+                {
+                    string TAGinIngrTable = "";
+                    connection.Open();
+                    cmd = "select forWhatRecipes from Ingredients where _id=\"" + item + "\";";
+                    command = new SQLiteCommand(cmd, connection);
+                    reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        if (Convert.ToString(reader["forWhatRecipes"])!="NULL" && Convert.ToString(reader["forWhatRecipes"]) != null)
+                        TAGinIngrTable = Convert.ToString(reader["forWhatRecipes"]);
+                    }
+                    if (TAGinIngrTable != "NULL" && TAGinIngrTable != null && TAGinIngrTable !="")
+                    {
+                        TAGinIngrTable = TAGinIngrTable.Remove(TAGinIngrTable.Length - 1, 1);
+                        TAGinIngrTable += "," + idOfRecipe + ".";
+                    }
+                    else
+                    {
+                        TAGinIngrTable = idOfRecipe + ".";
+                    }
+                    
+                    cmd = "update Ingredients set forWhatRecipes=\""+TAGinIngrTable+"\" where _id="+item+";";
+                    command = new SQLiteCommand(cmd, connection);
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                }
+
+
+               
+            //    command.ExecuteNonQuery();
+               
+               
+
+
+
+                // найти все ингредиенты в таблице, которые включены в рецепт
+                //добавить к каждому полю ID рецепта
+                //стереть точку в ячейке для рецептов
+                //добавить точку
+            }
+            catch (System.Data.SQLite.SQLiteException)
+            {
+                PathBase.BorderBrush = Separator.Background;
+            }
+        }
+
+        private void button_Click_7(object sender, RoutedEventArgs e)
+        {
+            //add ings to array
+            if (ingredients.Text != "")
+            {
+                eachIngID.Add(ingredients.Text);
+                addingsIDs.Content += " " + ingredients.Text;
+                ingredients.Clear();
+            }
+
         }
     }
 }

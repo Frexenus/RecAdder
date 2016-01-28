@@ -6,7 +6,7 @@
         <Label Content="recaddr" HorizontalAlignment="Left" Margin="21,18,0,0" VerticalAlignment="Top" Foreground="White" FontSize="50"/>
         <TextBox Name="name" HorizontalAlignment="Left" Height="23" Margin="15,106,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="147" Background="#FF333337" Foreground="White" BorderBrush="#FF999999" ToolTip="Название на русском" KeyUp="name_KeyUp"/>
         <TextBox Name="enName" HorizontalAlignment="Left" Height="23" Margin="167,106,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158" Background="#FF333337" Foreground="White" BorderBrush="#FF999999" KeyUp="enName_KeyUp" ToolTip="Название на анлийском вида katleti_v_souse"/>
-        <TextBox Name="ingredients" HorizontalAlignment="Left" Height="23" Margin="15,134,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="310" Background="#FF333337" Foreground="White" BorderBrush="#FF999999" ToolTip="id ингредиентов(см. в базе)Пример: 1,6,7,9. " KeyUp="ingredients_KeyUp"/>
+        <TextBox Name="ingredients" HorizontalAlignment="Left" Height="23" Margin="15,134,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="59" Background="#FF333337" Foreground="White" BorderBrush="#FF999999" ToolTip="id ингредиентов(см. в базе)Пример: 1,6,7,9. " KeyUp="ingredients_KeyUp"/>
         
         <TextBox Name="time" HorizontalAlignment="Left" Height="23" Margin="15,162,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="59" Background="#FF333337" Foreground="White" BorderBrush="#FF999999" ToolTip="Время приготовления(типа 20 м)" KeyUp="time_KeyUp"/>
         <TextBox x:Name="time_string" HorizontalAlignment="Left" Height="23" Margin="79,162,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="83" Background="#FF333337" Foreground="White" BorderBrush="#FF999999" ToolTip="МИНУТ" KeyUp="time_string_KeyUp"/>
@@ -42,7 +42,7 @@
         <Button Name="CloseStepTAG" Content="Close" HorizontalAlignment="Left" Height="91" Margin="285,401,0,0" VerticalAlignment="Top" Width="40" Background="#FFFF1111" Foreground="White" Click="Button_Click_1"/>
         <Button Name="CloseIngsTAG" Content="Close" HorizontalAlignment="Left" Height="30" Margin="270,497,0,0" VerticalAlignment="Top" Width="55" Background="#FFFF1111" Foreground="White" Click="Button_Click_3"/>
         <Button Name="toxml" Content="TO XML" HorizontalAlignment="Left" Height="35" Margin="180,540,0,0" VerticalAlignment="Top" Width="145" Foreground="White" Background="#FFFF8000" FontSize="25" Click="Button_Click_4"/>
-        <Label Name="Version" Content="v 0.2.2" HorizontalAlignment="Left" Margin="198,28,0,0" VerticalAlignment="Top" Foreground="White" BorderBrush="#FF05F305"/>
+        <Label Name="Version" Content="v 0.3.0" HorizontalAlignment="Left" Margin="198,28,0,0" VerticalAlignment="Top" Foreground="White" BorderBrush="#FF05F305"/>
         <ProgressBar Name="XMLprogress" HorizontalAlignment="Left" Height="20" Margin="180,574,0,0" VerticalAlignment="Top" Width="145" Background="{x:Null}" RenderTransformOrigin="0.5,0.5" BorderBrush="{x:Null}">
             <ProgressBar.RenderTransform>
                 <TransformGroup>
@@ -74,6 +74,7 @@
         <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="15,90,0,0" TextWrapping="Wrap" Text="RUS" VerticalAlignment="Top" Foreground="White"/>
         <Button x:Name="clearsteps" Content="Clear" HorizontalAlignment="Left" Margin="285,346,0,0" VerticalAlignment="Top" Width="40" Height="50" Background="#FFFF8000" Foreground="White" Click="clearsteps_Click"/>
         <Button x:Name="clearings" Content="Clear" HorizontalAlignment="Left" Margin="211,497,0,0" VerticalAlignment="Top" Width="54" Height="30" Background="#FFFF8000" Foreground="White" Click="clearings_Click"/>
+        <Button x:Name="addingsIDs" Content="ADD" HorizontalAlignment="Left" Height="23" Margin="79,134,0,0" VerticalAlignment="Top" Width="246" Background="#FFFF8000" Foreground="White" Click="button_Click_7"/>
 
     </Grid>
 </Window>
