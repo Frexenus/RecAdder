@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Data.Common;
 using System.Windows.Shapes;
 using System.Data.SQLite;
+using Microsoft.Win32;
 
 
 
@@ -43,6 +44,7 @@ namespace WpfApplication1
         {
             //closing steps TAG for XMl
             CloseStepTAG.Background = Version.BorderBrush;
+            EachStep.BorderBrush = Version.BorderBrush;
             StepsXML.Text += "\r\n" + "</string-array>" + "\r\n";
         }
 
@@ -79,7 +81,8 @@ namespace WpfApplication1
         {
             //closing ings TAG for XMl
             CloseIngsTAG.Background = Version.BorderBrush;
-            numberofStepsXML.Text += "\r\n" +"</string>" + "\r\n";
+            eachIngrid.BorderBrush = Version.BorderBrush;
+            numberofStepsXML.Text += "\r\n" + "</string>" + "\r\n";
         }
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
@@ -108,15 +111,15 @@ namespace WpfApplication1
             catch (System.IO.FileNotFoundException)
             {
                 PathIngs.BorderBrush = Separator.Background;
-                
+
             }
-            
+
             //toxml.Background = XMLprogress.Foreground;
         }
 
         public static void DeleteLastLine(string filepath)
         {
-                 List<string> lines = System.IO.File.ReadAllLines(filepath).ToList();
+            List<string> lines = System.IO.File.ReadAllLines(filepath).ToList();
 
             System.IO.File.WriteAllLines(filepath, lines.GetRange(0, lines.Count - 1).ToArray());
 
@@ -134,15 +137,15 @@ namespace WpfApplication1
                 SQLProcess.Value = 40;
                 //SQLiteCommand command = new SQLiteCommand("INSERT INTO 'Recipes' ('numberOfSteps') VALUES (1);", connection);
                 SQLiteCommand command = new SQLiteCommand(@"INSERT INTO 'Recipes'
-('name' , 'ingredients' , 'howToCook', 'numberOfSteps', 'timeForCooking', 'numberOfPersons' , 'numberOfEveryIng','numberOfIngredients')
+('name' , 'ingredients' , 'howToCook', 'numberOfSteps', 'timeForCooking', 'numberOfPersons' , 'numberOfEveryIng','numberOfIngredients','measureForTime')
 VALUES ('" + name.Text + "','" +
               ingredients.Text + "','" +
               enName.Text + "'," +
-              CSteps + ",'" +
-              time.Text + "'," +
+              CSteps + "," +
+              Convert.ToInt32(time.Text) + "," +
               Convert.ToInt32(persons.Text) +
-              ",'number_of_ingredients_for_" + enName.Text + "', '" +
-              CIing + "');", connection);
+              ",'number_of_ingredients_for_" + enName.Text + "'," +
+              CIing + ",'" + time_string.Text + "');", connection);
 
                 SQLProcess.Value = 70;
                 command.ExecuteNonQuery();
@@ -169,11 +172,18 @@ VALUES ('" + name.Text + "','" +
             ingredients.Clear();
             time.Clear();
             persons.Clear();
-            name.BorderBrush = EachStep.BorderBrush;
-            time.BorderBrush = EachStep.BorderBrush;
-            persons.BorderBrush = EachStep.BorderBrush;
-            ingredients.BorderBrush = EachStep.BorderBrush;
-            enName.BorderBrush = EachStep.BorderBrush;
+            time_string.Clear();
+            name.BorderBrush = nextbutton.BorderBrush;
+            time.BorderBrush = nextbutton.BorderBrush;
+            persons.BorderBrush = nextbutton.BorderBrush;
+            ingredients.BorderBrush = nextbutton.BorderBrush;
+            enName.BorderBrush = nextbutton.BorderBrush;
+            time_string.BorderBrush = nextbutton.BorderBrush;
+            EachStep.BorderBrush = nextbutton.BorderBrush;
+            eachIngrid.BorderBrush = nextbutton.BorderBrush;
+            SQLProcess.Value = 0;
+            XMLprogress.Value = 0;
+
         }
 
         private void name_KeyUp(object sender, KeyEventArgs e)
@@ -216,10 +226,11 @@ VALUES ('" + name.Text + "','" +
         {
             string ingstring;
             ingstring = ingredients.Text;
-            if (ingstring == null || ingstring == ""){
+            if (ingstring == null || ingstring == "")
+            {
                 return;
             }
-            if (ingstring[ingstring.Length-1] == '.')
+            if (ingstring[ingstring.Length - 1] == '.')
             {
                 ingredients.BorderBrush = Version.BorderBrush;
             }
@@ -227,6 +238,56 @@ VALUES ('" + name.Text + "','" +
             {
                 ingredients.BorderBrush = EachStep.BorderBrush;
             }
+        }
+
+        private void time_string_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (time_string.Text != "")
+            {
+                time_string.BorderBrush = Version.BorderBrush;
+            }
+            else
+            {
+                time_string.BorderBrush = EachStep.BorderBrush;
+            }
+        }
+
+        private void opendialogBase(object sender, MouseButtonEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == true)
+            {
+                PathBase.Text = openFileDialog.FileName;
+            }
+        }
+
+        private void PathStep_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == true)
+            {
+                PathStep.Text = openFileDialog.FileName;
+            }
+        }
+
+        private void PathIngs_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == true)
+            {
+                PathIngs.Text = openFileDialog.FileName;
+            }
+        }
+
+        private void clearsteps_Click(object sender, RoutedEventArgs e)
+        {
+            StepsXML.Text = "";
+
+        }
+
+        private void clearings_Click(object sender, RoutedEventArgs e)
+        {
+            numberofStepsXML.Text = "";
         }
     }
 }
