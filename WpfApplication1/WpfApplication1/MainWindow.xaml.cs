@@ -167,7 +167,7 @@ VALUES ('" + name.Text + "','" +
               Convert.ToInt32(time.Text) + "," +
               Convert.ToInt32(persons.Text) +
               ",'number_of_ingredients_for_" + enName.Text + "'," +
-              CIing + ",'" + time_string.Text + "');", connection);
+              eachIngID.Count + ",'" + time_string.Text + "');", connection);
 
                 SQLProcess.Value = 70;
                 command.ExecuteNonQuery();
@@ -192,6 +192,7 @@ VALUES ('" + name.Text + "','" +
 
         private void Button_Click_6(object sender, RoutedEventArgs e)
         {
+            eachIngID.Clear();
             addingsIDs.Content = "ADD";
             name.Clear();
             enName.Clear();

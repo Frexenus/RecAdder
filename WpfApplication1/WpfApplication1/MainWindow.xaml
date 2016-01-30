@@ -42,7 +42,7 @@
         <Button Name="CloseStepTAG" Content="Close" HorizontalAlignment="Left" Height="91" Margin="285,401,0,0" VerticalAlignment="Top" Width="40" Background="#FFFF1111" Foreground="White" Click="Button_Click_1"/>
         <Button Name="CloseIngsTAG" Content="Close" HorizontalAlignment="Left" Height="30" Margin="270,497,0,0" VerticalAlignment="Top" Width="55" Background="#FFFF1111" Foreground="White" Click="Button_Click_3"/>
         <Button Name="toxml" Content="TO XML" HorizontalAlignment="Left" Height="35" Margin="180,540,0,0" VerticalAlignment="Top" Width="145" Foreground="White" Background="#FFFF8000" FontSize="25" Click="Button_Click_4"/>
-        <Label Name="Version" Content="v 0.3.0" HorizontalAlignment="Left" Margin="198,28,0,0" VerticalAlignment="Top" Foreground="White" BorderBrush="#FF05F305"/>
+        <Label Name="Version" Content="v 0.3.1" HorizontalAlignment="Left" Margin="198,28,0,0" VerticalAlignment="Top" Foreground="White" BorderBrush="#FF05F305"/>
         <ProgressBar Name="XMLprogress" HorizontalAlignment="Left" Height="20" Margin="180,574,0,0" VerticalAlignment="Top" Width="145" Background="{x:Null}" RenderTransformOrigin="0.5,0.5" BorderBrush="{x:Null}">
             <ProgressBar.RenderTransform>
                 <TransformGroup>
