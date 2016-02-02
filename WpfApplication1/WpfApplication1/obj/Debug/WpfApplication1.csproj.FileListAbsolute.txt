@@ -8,7 +8,6 @@ D:\Fridge\RecAdder\WpfApplication1\WpfApplication1\bin\Debug\System.Data.SQLite.
 D:\Fridge\RecAdder\WpfApplication1\WpfApplication1\bin\Debug\System.Data.SQLite.pdb
 D:\Fridge\RecAdder\WpfApplication1\WpfApplication1\bin\Debug\SQLite.Designer.dll
 D:\Fridge\RecAdder\WpfApplication1\WpfApplication1\bin\Debug\SQLite.Designer.pdb
-D:\Fridge\RecAdder\WpfApplication1\WpfApplication1\bin\Debug\RecAdd_v01.exe
 C:\Users\Harwister\Documents\GitHub\RecAdder\WpfApplication1\WpfApplication1\bin\Debug\EnvDTE.dll
 C:\Users\Harwister\Documents\GitHub\RecAdder\WpfApplication1\WpfApplication1\bin\Debug\stdole.dll
 C:\Users\Harwister\Documents\GitHub\RecAdder\WpfApplication1\WpfApplication1\bin\Debug\SQLite.Designer.pdb

@@ -163,8 +163,8 @@ namespace WpfApplication1
 VALUES ('" + name.Text + "','" +
               ingstringtosql + "','" +
               enName.Text + "'," +
-              CSteps + "," +
-              Convert.ToInt32(time.Text) + "," +
+              CSteps + ",'" +
+              time.Text + "'," +
               Convert.ToInt32(persons.Text) +
               ",'number_of_ingredients_for_" + enName.Text + "'," +
               eachIngID.Count + ",'" + time_string.Text + "');", connection);
