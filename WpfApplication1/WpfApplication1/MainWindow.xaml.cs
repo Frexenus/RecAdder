@@ -393,5 +393,49 @@ VALUES ('" + name.Text + "','" +
             }
 
         }
+        
+
+
+
+
+
+
+
+
+
+        private void ingredients_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                if (ingredients.Text != "")
+                {
+                    eachIngID.Add(ingredients.Text);
+                    addingsIDs.Content += " " + ingredients.Text;
+                    ingredients.Clear();
+                }
+            }
+        }
+
+        private void EachStep_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                ++CSteps;
+                //adding step tag for xml
+                StepsXML.Text += "\r\n" + "\t" + "<item>" + EachStep.Text + "</item>";
+                EachStep.Clear();
+            }
+        }
+
+        private void eachIngrid_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                ++CIing;
+                //adding element to ings for XML
+                numberofStepsXML.Text += "\r\n" + "\t" + eachIngrid.Text + "\\n";
+                eachIngrid.Clear();
+            }
+        }
     }
 }
